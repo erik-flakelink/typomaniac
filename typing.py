@@ -62,3 +62,5 @@ Input.config(font=Char)
 Input.pack()
 
 root.bind('<' + character + '>', check)
+
+root.mainloop()
