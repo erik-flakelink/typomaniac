@@ -5,7 +5,7 @@ characters_3 = characters_2 + ["s", "l"]
 characters_4 = characters_3 + ["a", ";"]
 
 #HOME ROW 2
-characters_5 = characters_4 + ["space"]
+characters_5 = characters_4 + ["space","space","space","space","space","space","space","space"]
 characters_6 = characters_5 + ["g", "h"]
 
 #UPPER ROW
