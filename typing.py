@@ -5,7 +5,7 @@ characters_3 = characters_2 + ["s", "l"]
 characters_4 = characters_3 + ["a", ";"]
 
 #HOME ROW 2
-characters_5 = characters_4 + ["SPACE"]
+characters_5 = characters_4 + ["space"]
 characters_6 = characters_5 + ["g", "h"]
 
 #UPPER ROW
@@ -50,7 +50,7 @@ Str.pack(side=TOP)
 
 def check(self):
     global character
-    root.unbind('<' + character + '>', check)
+    root.unbind('<' + character + '>')
     print("CORRECT!")
     Str["text"] = random.choice(characters_15)
     character = Str["text"]
