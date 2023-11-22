@@ -48,18 +48,27 @@ Demo.pack(side=TOP)
 Str = Label(root, text=character,font=Char)
 Str.pack(side=TOP)
 
+multipler = Label(root, text="",font=Subtitle)
+multipler.pack(side=TOP)
+
+multiply = 1
+
 def check(self):
     global character
+    global multiply
+    global multiplier
+    character2 = character
     root.unbind('<' + character + '>')
     print("CORRECT!")
     Str["text"] = random.choice(characters_15)
     character = Str["text"]
+    if character == character2:
+        multiply += 1
+        multipler["text"] = "x" + str(multiply)
+    else:
+        multiply = 1
+        multipler["text"] = ""
     root.bind('<' + character + '>', check)
-        
-
-Input = Entry(root)
-Input.config(font=Char)
-Input.pack()
 
 root.bind('<' + character + '>', check)
 
