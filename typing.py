@@ -21,46 +21,107 @@ characters_13 = characters_12 + ["x", "m"]
 characters_14 = characters_13 + ["z", ","]
 characters_15 = characters_14 + ["v", "b"]
 
-
-import random
-character = random.choice(characters_15)
-
-from tkinter import *
-
-root = Tk()
-
-root.title("TYPOMANIAC")
-
-root.state("zoomed")
-
-Canvas = Canvas(root, width = 974, height = 205, bg="#00f5ff",highlightthickness=0)      
-Canvas.pack()
-Splash = PhotoImage(file="SPLASH.png")
-Canvas.create_image(0,0, anchor=NW, image=Splash)
-
 Char = ("Times New Roman", 200)
 
 Subtitle = ("Times New Roman", 50)
 
-Demo = Label(root, text='!!! Demo !!!',font=Subtitle)
-Demo.pack(side=TOP)
+Btn = ("Comic Sans MS", 80)
 
-Str = Label(root, text=character,font=Char)
-Str.pack(side=TOP)
+import random
 
-multipler = Label(root, text="",font=Subtitle)
-multipler.pack(side=TOP)
+blue = "#8800FF"
 
-multiply = 1
+diffculty = characters_15
+
+character = random.choice(diffculty)
+
+from tkinter import *
+
+def root1():
+    global root
+    global blue
+    global Canvas2
+    global Splash
+    global RandomImg
+    global Random
+
+    root = Tk()
+    root.title("TYPOMANIAC")
+
+    root.configure(background=blue)
+
+    root.state("zoomed")
+
+    Canvas2 = Canvas(root, width = 974, height = 205, bg=blue,highlightthickness=0)      
+    Canvas2.pack(anchor=NW)
+    Splash = PhotoImage(file="SPLASH.png")
+    RandomImg = PhotoImage(file="RANDOM.png")
+    Canvas2.create_image(0,0, anchor=NW, image=Splash)
+
+    Random = Button(root, image=RandomImg, compound="left", text="Random", bg=blue, font=Btn, command=Random)
+    Random.pack()
+
+    root.mainloop()
+
+def root2():
+    global root
+    global blue
+    global Canvas2
+    global Splash
+    global RandomImg
+    global Random
+
+    root = Tk()
+
+    root.title("TYPOMANIAC")
+
+    blue = "#8800FF"
+
+    root.configure(background=blue)
+
+    root.state("zoomed")
+
+    Canvas2 = Canvas(root, width = 974, height = 205, bg=blue,highlightthickness=0)      
+    Canvas2.pack(anchor=NW)
+    Splash = PhotoImage(file="SPLASH.png")
+    RandomImg = PhotoImage(file="RANDOM.png")
+    Canvas2.create_image(0,0, anchor=NW, image=Splash)
+
+    Char = ("Times New Roman", 200)
+
+    Subtitle = ("Times New Roman", 50)
+
+    Btn = ("Comic Sans MS", 80)
+
+    global Str
+    global multipler
+    Str = Label(root, text=character,font=Char,bg=blue, fg="#000000")
+    Str.pack()
+    multipler = Label(root, text="",font=Subtitle,bg=blue, fg="#000000")
+    multipler.pack()
+
+    multiply = 1
+
+    root.bind('<' + character + '>', check)
+
+    root.mainloop()
+
+def Random():
+    global root
+    root.destroy()
+    root2()
 
 def check(self):
     global character
     global multiply
     global multiplier
+    global blue
+    global Str
+    global multipler
     character2 = character
     root.unbind('<' + character + '>')
     print("CORRECT!")
-    Str["text"] = random.choice(characters_15)
+    Str["text"] = random.choice(diffculty)
     character = Str["text"]
     if character == character2:
         multiply += 1
@@ -70,6 +131,4 @@ def check(self):
         multipler["text"] = ""
     root.bind('<' + character + '>', check)
 
-root.bind('<' + character + '>', check)
-
-root.mainloop()
+root1()
