@@ -99,7 +99,7 @@ def root2():
     Str.pack()
     multipler = Label(root, text="",font=Subtitle,bg=blue, fg="#000000")
     multipler.pack()
-
+    global multiply
     multiply = 1
 
     root.bind('<' + character + '>', check)
