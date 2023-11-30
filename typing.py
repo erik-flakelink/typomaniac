@@ -5,7 +5,7 @@ characters_3 = characters_2 + ["s", "l"]
 characters_4 = characters_3 + ["a", ";"]
 
 #HOME ROW 2
-characters_5 = characters_4 + ["space","space","space","space","space","space","space","space"]
+characters_5 = characters_4 + ["space","space","space","space","space","space","space","space"] 
 characters_6 = characters_5 + ["g", "h"]
 
 #UPPER ROW
@@ -25,7 +25,7 @@ Char = ("Times New Roman", 200)
 
 Subtitle = ("Times New Roman", 50)
 
-Btn = ("Comic Sans MS", 80)
+Btn = ("Comic Sans MS", 67)
 
 import random
 
@@ -37,8 +37,12 @@ character = random.choice(diffculty)
 
 from tkinter import *
 
+
+root = Tk()
+
 def root1():
     global root
+    root.destroy()
     global blue
     global Canvas2
     global Splash
@@ -58,13 +62,17 @@ def root1():
     RandomImg = PhotoImage(file="RANDOM.png")
     Canvas2.create_image(0,0, anchor=NW, image=Splash)
 
-    Random = Button(root, image=RandomImg, compound="left", text="Random", bg=blue, font=Btn, command=Random)
+    Random = Button(root, image=RandomImg, compound="left", text="Random", bg=blue, font=Btn, command=root2)
     Random.pack()
 
+    ver = Label(root, text="v0.0.6",font=Subtitle,bg=blue, fg="#000000")
+    ver.pack(side=BOTTOM, anchor=SE)
+    
     root.mainloop()
 
 def root2():
     global root
+    root.destroy()
     global blue
     global Canvas2
     global Splash
@@ -103,7 +111,14 @@ def root2():
     multiply = 1
 
     root.bind('<' + character + '>', check)
+    
+    Canvas3 = Canvas(root, width = 974, height = 205, bg=blue,highlightthickness=0)      
+    Canvas3.pack()
+    RandomImg = PhotoImage(file="RETURN.png")
 
+    Back = Button(root, image=RandomImg, compound="left", text="Return", bg=blue, font=Btn, command=root1)
+    Back.pack()
+     
     root.mainloop()
 
 def Random():
